@@ -4,11 +4,19 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import androidx.room.Room
+import com.bancosantander.globallogicbryanescalona.URL_BASE_API
+import com.bancosantander.globallogicbryanescalona.data.remote.source.SongRemoteDatSource
+import com.bancosantander.globallogicbryanescalona.data.repository.SongRepository
+import com.bancosantander.globallogicbryanescalona.domain.usecase.GetSongUseCase
 import com.bancosantander.globallogicbryanescalona.util.AppPreferences
 import com.squareup.picasso.Picasso
+import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 val appModule = module {
 
@@ -23,6 +31,25 @@ val appModule = module {
             Context.MODE_PRIVATE
         )
     }
+
+
+    /* Retrofit */
+    single {
+        OkHttpClient.Builder()
+            .callTimeout(1, TimeUnit.MINUTES)
+            .connectTimeout(1, TimeUnit.MINUTES)
+            .readTimeout(1, TimeUnit.MINUTES)
+            .writeTimeout(1, TimeUnit.MINUTES)
+            .build()
+    }
+
+    single {
+        Retrofit.Builder()
+            .baseUrl(URL_BASE_API)
+            .client(get())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 /* Database */
 /*single {
     Room.databaseBuilder(
@@ -36,76 +63,19 @@ val appModule = module {
 factory { get<AppDatabase>().parkingDao() }
 factory { get<AppDatabase>().tariffDao() }*/
 
-/* Firebase */
-/*factory { LoginRemoteFire() }
-factory { ParkingRemoteFire() }
-factory { DashRemoteFire() }
-factory { HistoryRemoteFire() }
-factory { AssistanceRemoteFire() }
-factory { SettingRemoteFire() }
-factory { DiscountsRemoteFire() }*/
 
 /* DataSource */
-/*factory { LoginLocalDataSource(get()) }
-factory { ParkingLocalDataSource(get()) }
-factory { ParkingRemoteDataSource(get()) }
-factory { TariffLocalDataSource(get()) }
-factory { LoginRemoteDataSource(get()) }
-factory { DashRemoteDataSource(get()) }
-factory { HistoryRemoteDataSource(get()) }
-factory { AssistanceRemoteDataSource(get()) }
-factory { SettingRemoteDataSource(get()) }
-factory { DiscountsRemoteDataSource(get()) }
-*//* Repositories *//*
-factory { UserLoginRepository(get(), get()) }
-factory { ParkingRepository(get(), get()) }
-factory { TariffRepository(get()) }
-factory { DashRepository(get()) }
-factory { HistoryRepository(get()) }
-factory { AssistanceRepository(get()) }
-factory { SettingRepository(get()) }
-factory { DiscountsRepository(get()) }
-*//* UseCases *//*
-factory { GetUserLoginUseCase(get()) }
-factory { SaveUserLoginUseCase(get()) }
-factory { SaveLoginRemoteUseCase(get()) }
-factory { GetParkingUseCase(get()) }
-factory { SaveParkingUseCase(get()) }
-factory { SaveParkingRemoteUseCase(get()) }
-factory { UpdateParkingUseCase(get()) }
-factory { UpdateParkingRemoteUseCase(get()) }
-factory { UpdateTariffUseCase(get()) }
-factory { SaveTariffUseCase(get()) }
-factory { GetTariffUseCase(get()) }
-factory { UpdateLoginUseCase(get()) }
-factory { GetUserLoginRemoteUseCase(get()) }
-factory { GetParkingRemoteUseCase(get()) }
-factory { GetDashLocalRemoteUseCase(get()) }
-factory { UpdateDashParkingRemoteUseCase(get()) }
-factory { SaveHistoryRemoteUseCase(get()) }
-factory { GetDashHistoryRemoteUseCase(get()) }
-factory { GetAssistanceRemoteUseCase(get()) }
-factory { SaveAssistanceRemoteUseCase(get()) }
-factory { UpdateAssistanceRemoteCaseUse(get()) }
-factory { GetUserAllRemoteUseCase(get()) }
-factory { GetPasswordSettingRemoteUseCase(get()) }
-factory { GetHistoryCloseRemoteUseCase(get()) }
-factory { GetDiscountsRemoteUseCase(get()) }
-factory { GetDocParkingRemoteUseCase(get()) }
-factory { SaveDiscountDefaultRemoteCaseUse(get()) }
-factory { UpdatePasswordSettingRemoteUseCase(get()) }
-factory { GetLocalDiscountRemoteUseCase(get()) }
-factory { UpdateStateDiscountRemoteCaseUse(get()) }
-factory { UpdateInfoDiscountCreatedRemoteUseCase(get()) }
-factory { SaveNewDiscountRemoteUseCase(get()) }*/
+    factory { SongRemoteDatSource(get()) }
 
-/* View models */
-/*viewModel { UserLoginViewModel(get(), get(), get(), get(), get(),get(),get(),get()) }
-viewModel { ParkingViewModel(get(), get(), get(), get(), get(), get(), get(), get(),get(),get(),get(),get()) }
-viewModel { TariffViewModel(get(), get(), get(),get()) }
-viewModel { DashViewModel(get(), get(), get(),get(),get(),get(),get(),get(),get(),get(),get(),get()) }
-viewModel { HistoryViewModel(get()) }
-viewModel { AssistanceViewModel(get(),get(),get(),get()) }*/
+    /* Repositories */
+    factory { SongRepository(get()) }
+
+    /* UseCases */
+    factory { GetSongUseCase(get()) }
+ /* View models */
+/*
+viewModel { UserLoginViewModel(get(), get(), get(), get(), get(),get(),get(),get()) }*/
+
 
 
 /* Picasso */
