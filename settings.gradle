@@ -1,2 +1,4 @@
 rootProject.name='GlobalLogicBryanEscalona'
 include ':app'
+include ':buildSrc'
+include ':core'

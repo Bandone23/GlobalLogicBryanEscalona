@@ -1,7 +1,8 @@
-package com.bancosantander.globallogicbryanescalona
+package com.bancosantander.globallogicbryanescalona.presentation.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bancosantander.globallogicbryanescalona.R
 
 class MainActivity : AppCompatActivity() {
 
