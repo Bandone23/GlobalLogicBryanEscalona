@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation Libraries.kotlin
+
+    implementation Libraries.coroutinescore
+    implementation Libraries.coroutinesandroid
+
+    implementation SupportLibraries.appcompat
+
+    implementation SupportLibraries.livedata
+    implementation SupportLibraries.lifecycle
+
+    implementation SupportLibraries.legacy_v4
+
+    implementation SupportLibraries.okhttp
+    implementation Libraries.retrofit
+    implementation Libraries.retrofitgson
+// quitar esta dependencia y todas las firestore
+    implementation Libraries.crashlytics
+}
