@@ -45,6 +45,8 @@ dependencies {
     implementation Libraries.koinScope
     implementation Libraries.koinViewModel
 
+
+
     implementation Libraries.coroutinescore
     implementation Libraries.coroutinesandroid
 

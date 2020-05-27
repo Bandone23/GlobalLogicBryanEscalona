@@ -3,16 +3,17 @@ package com.bancosantander.globallogicbryanescalona.di
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
-import androidx.room.Room
 import com.bancosantander.globallogicbryanescalona.URL_BASE_API
+import com.bancosantander.globallogicbryanescalona.data.remote.net.SongRemoteApi
 import com.bancosantander.globallogicbryanescalona.data.remote.source.SongRemoteDatSource
 import com.bancosantander.globallogicbryanescalona.data.repository.SongRepository
 import com.bancosantander.globallogicbryanescalona.domain.usecase.GetSongUseCase
+import com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.search.SongViewModel
 import com.bancosantander.globallogicbryanescalona.util.AppPreferences
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
-import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -31,8 +32,6 @@ val appModule = module {
             Context.MODE_PRIVATE
         )
     }
-
-
     /* Retrofit */
     single {
         OkHttpClient.Builder()
@@ -50,6 +49,9 @@ val appModule = module {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+   /* Api*/
+    single { get<Retrofit>().create(SongRemoteApi::class.java) as SongRemoteApi }
 /* Database */
 /*single {
     Room.databaseBuilder(
@@ -73,8 +75,8 @@ factory { get<AppDatabase>().tariffDao() }*/
     /* UseCases */
     factory { GetSongUseCase(get()) }
  /* View models */
-/*
-viewModel { UserLoginViewModel(get(), get(), get(), get(), get(),get(),get(),get()) }*/
+    viewModel { SongViewModel(get()) }
+
 
 
 
