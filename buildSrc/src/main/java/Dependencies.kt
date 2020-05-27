@@ -52,7 +52,7 @@ object Versions {
     val lifecycle = "2.0.0"
     val leakCanary = "2.0-alpha-2"
     val crashlytics = "2.10.1"
-    val koin = "2.0.0-beta-1"
+    val koin = "2.0.1"
 
     val playCore = "1.6.1"
 
@@ -112,6 +112,7 @@ object Libraries {
     val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     val koinScope = "org.koin:koin-androidx-scope:${Versions.koin}"
     val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+    val koinTest= "org.koin:koin-test:$${Versions.koin}"
 
     val coroutinescore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     val coroutinesandroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
