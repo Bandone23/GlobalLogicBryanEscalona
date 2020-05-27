@@ -38,6 +38,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(Modules.core)
     implementation Libraries.kotlin
     implementation Libraries.ktx
     implementation Libraries.koinAndroid
@@ -57,9 +58,9 @@ dependencies {
     kapt Libraries.lifecycleCompiler
 
     implementation Libraries.picasso
-
+    implementation Libraries.retrofitgson
     implementation Libraries.retrofit
-
+    implementation Libraries.loggingInterceptor
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.constraintL
     implementation SupportLibraries.circleimg
@@ -67,6 +68,7 @@ dependencies {
     implementation SupportLibraries.cardview
     implementation SupportLibraries.recyclerview
     implementation SupportLibraries.okhttp
+
     implementation SupportLibraries.room
     implementation SupportLibraries.roomKtx
 
