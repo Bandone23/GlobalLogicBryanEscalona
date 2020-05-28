@@ -1,12 +1,12 @@
 package com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.detail
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bancosantander.core.coroutines.Result
@@ -14,10 +14,7 @@ import com.bancosantander.core.extension.observe
 
 import com.bancosantander.globallogicbryanescalona.R
 import com.bancosantander.globallogicbryanescalona.databinding.FragmentAlbumBinding
-import com.bancosantander.globallogicbryanescalona.databinding.FragmentSearchBinding
 import com.bancosantander.globallogicbryanescalona.domain.model.Album
-import com.bancosantander.globallogicbryanescalona.domain.model.SongList
-import com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.search.SearchFragmentDirections
 import com.bancosantander.globallogicbryanescalona.util.getImgPicasso
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,6 +23,7 @@ class AlbumFragment : Fragment() {
 
     private val viewModel:AlbumViewModel by viewModel()
     lateinit var binding: FragmentAlbumBinding
+    private val mediaPlayer = MediaPlayer()
 
     private var artistId: Long = 0
     private var collectionId: Long = 0
@@ -78,13 +76,28 @@ class AlbumFragment : Fragment() {
         }
     }
 
+
     private fun songClicked(song: Album, viewId: Int) {
         when (viewId) {
             R.id.song_album -> {
-                /*val action= SearchFragmentDirections.nextAction(song.artistId, song.collectionId)
-                findNavController().navigate(action)*/
-
+               //
+            }
+            R.id.btn_play->{
+                prepareMusicSource(song.previewUrl!!)
+                if(mediaPlayer.isPlaying){
+                    mediaPlayer.pause();
+                   // R.id.btn_play.setImageResource(R.drawable.ic_pause)
+                }else{
+                    mediaPlayer.start()
+                  //  binding.btnPlay.setImageResource(R.drawable.ic_play_on)
+                }
             }
         }
+    }
+
+    private fun prepareMusicSource(url:String){
+       mediaPlayer.setDataSource(url)
+        mediaPlayer.prepare()
+
     }
 }

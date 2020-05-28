@@ -23,7 +23,8 @@ data class AlbumEntry(
     val country: String,
     val currency: String,
     val releaseDate: String,
-    val primaryGenreName: String
+    val primaryGenreName: String,
+    val previewUrl:String?
 )
 
 fun AlbumEntry.toAlbum() = Album(
@@ -47,5 +48,9 @@ fun AlbumEntry.toAlbum() = Album(
     country = country,
     currency = currency,
     releaseDate = releaseDate,
-    primaryGenreName = primaryGenreName
+    primaryGenreName = primaryGenreName,
+    previewUrl = previewUrl,
+    isPlaying = false,
+    isPaused = false
+
 )

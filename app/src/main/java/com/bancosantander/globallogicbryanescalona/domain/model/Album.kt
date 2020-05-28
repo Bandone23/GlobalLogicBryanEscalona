@@ -1,5 +1,7 @@
 package com.bancosantander.globallogicbryanescalona.domain.model
 
+import com.bancosantander.globallogicbryanescalona.R
+
 data class Album (
     val wrapperType: String?,
     val artistId: Long,
@@ -21,5 +23,15 @@ data class Album (
     val country: String?,
     val currency: String?,
     val releaseDate: String?,
-    val primaryGenreName: String?
-)
+    val primaryGenreName: String?,
+    val previewUrl:String?,
+    var isPlaying: Boolean,
+    var isPaused: Boolean
+) {
+    fun computeActionIconResource() = when {
+        isPlaying -> R.drawable.ic_pause
+        isPaused -> R.drawable.ic_play_on
+
+        else -> 0
+    }
+}
