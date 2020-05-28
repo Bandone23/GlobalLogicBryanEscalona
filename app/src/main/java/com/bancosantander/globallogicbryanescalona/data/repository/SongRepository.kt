@@ -9,8 +9,8 @@ import com.bancosantander.globallogicbryanescalona.domain.model.SongList
 class SongRepository(
     private val songRemoteDatSource: SongRemoteDatSource
 ) {
-    suspend fun getSong():List<SongList> {
-        return songRemoteDatSource.getSong().map { it.toSongs() }
+    suspend fun getSong(term: String):List<SongList> {
+        return songRemoteDatSource.getSong(term).map { it.toSongs() }
     }
     suspend fun getAlbum(artistId: Long):List<Album> {
         return  songRemoteDatSource.getAlbum(artistId).map { it.toAlbum() }

@@ -3,8 +3,8 @@ package com.bancosantander.globallogicbryanescalona.domain.model
 data class SongList (
     val wrapperType:String,
     val kind:String,
-    val artistId:Int,
-    val collectionId:Int,
+    val artistId:Long,
+    val collectionId:Long,
     val trackId:Int,
     val artistName:String,
     val collectionName:String,

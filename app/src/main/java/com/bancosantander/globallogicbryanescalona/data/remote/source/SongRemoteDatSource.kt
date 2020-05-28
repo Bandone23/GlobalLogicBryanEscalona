@@ -9,8 +9,8 @@ import com.bancosantander.globallogicbryanescalona.domain.model.Album
 open class SongRemoteDatSource(
     private val songRemoteApi: SongRemoteApi
 ) {
-    suspend fun getSong():List<SongListEntry>{
-        return songRemoteApi.getSong().await()!!.results
+    suspend fun getSong(term: String):List<SongListEntry>{
+        return songRemoteApi.getSong(term).await()!!.results
     }
 
     suspend fun getAlbum(artistId: Long):List<AlbumEntry>{

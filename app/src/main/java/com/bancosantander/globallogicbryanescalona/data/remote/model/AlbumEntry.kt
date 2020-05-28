@@ -3,10 +3,13 @@ package com.bancosantander.globallogicbryanescalona.data.remote.model
 import com.bancosantander.globallogicbryanescalona.domain.model.Album
 
 data class AlbumEntry(
+    val wrapperType: String?,
     val artistId: Long,
     val collectionId: Long,
     val artistName: String,
-    val collectionName: String,
+    val collectionName: String?,
+    val trackName:String?,
+    val collectionType:String?,
     val collectionCensoredName: String,
     val artistViewUrl: String?,
     val collectionViewUrl: String,
@@ -24,10 +27,13 @@ data class AlbumEntry(
 )
 
 fun AlbumEntry.toAlbum() = Album(
+    wrapperType=wrapperType,
     artistId = artistId,
     collectionId = collectionId,
     artistName = artistName,
     collectionName = collectionName,
+    trackName = trackName,
+    collectionType = collectionType,
     collectionCensoredName = collectionCensoredName,
     artistViewUrl = artistViewUrl,
     collectionViewUrl = collectionViewUrl,

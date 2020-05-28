@@ -6,13 +6,12 @@
     <data>
 
         <variable
-            name="song"
-            type="com.bancosantander.globallogicbryanescalona.domain.model.SongList" />
+            name="songA"
+            type="com.bancosantander.globallogicbryanescalona.domain.model.Album" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/card_song"
+        android:id="@+id/song_album"
         android:background="@android:color/background_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,8 +20,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
@@ -37,9 +36,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="5dp"
-            android:text="@{`Cancion: `+song.trackName}"
+            android:text="@{songA.trackName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -47,19 +46,6 @@
             tools:text="daddy yanke" />
 
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="5dp"
-            android:text="@{`Album: `+song.collectionCensoredName}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:text="album" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </layout>
