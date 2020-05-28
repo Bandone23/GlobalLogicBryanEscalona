@@ -7,8 +7,10 @@ import com.bancosantander.globallogicbryanescalona.URL_BASE_API
 import com.bancosantander.globallogicbryanescalona.data.remote.net.SongRemoteApi
 import com.bancosantander.globallogicbryanescalona.data.remote.source.SongRemoteDatSource
 import com.bancosantander.globallogicbryanescalona.data.repository.SongRepository
+import com.bancosantander.globallogicbryanescalona.domain.usecase.GetAlbumUseCase
 import com.bancosantander.globallogicbryanescalona.domain.usecase.GetSongUseCase
-import com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.search.SongViewModel
+import com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.detail.AlbumViewModel
+import com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.search.SearchViewModel
 import com.bancosantander.globallogicbryanescalona.util.AppPreferences
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
@@ -74,8 +76,10 @@ factory { get<AppDatabase>().tariffDao() }*/
 
     /* UseCases */
     factory { GetSongUseCase(get()) }
+    factory { GetAlbumUseCase(get()) }
  /* View models */
-    viewModel { SongViewModel(get()) }
+    viewModel { SearchViewModel(get()) }
+    viewModel { AlbumViewModel(get()) }
 
 
 

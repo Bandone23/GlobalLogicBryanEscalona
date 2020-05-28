@@ -3,19 +3,20 @@ package com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.sea
 import androidx.lifecycle.ViewModel
 import com.bancosantander.core.extension.LiveResult
 import com.bancosantander.globallogicbryanescalona.domain.model.SongList
+import com.bancosantander.globallogicbryanescalona.domain.model.request.SearchRequest
 import com.bancosantander.globallogicbryanescalona.domain.usecase.GetSongUseCase
 import com.bancosantander.globallogicbryanescalona.presentation.ui.adapter.SongAdapter
 
 
-class SongViewModel(
+class SearchViewModel(
     private val getSongUseCase: GetSongUseCase
 ): ViewModel() {
    lateinit var adapter: SongAdapter
     val songLiveData = LiveResult<List<SongList>>()
 
 
-    fun getSong(){
-        getSongUseCase.execute(liveData = songLiveData)
+    fun getSong(term:String){
+        getSongUseCase.execute(liveData = songLiveData,params = SearchRequest(search = term))
     }
 
     fun initAdapter(clickListener:(SongList,Int)-> Unit){

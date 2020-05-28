@@ -9,10 +9,27 @@
         android:id="@+id/searchFragment"
         android:name="com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/albumFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.detail.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        android:id="@+id/albumFragment"
+        android:name="com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.detail.AlbumFragment"
+        android:label="fragment_album"
+        tools:layout="@layout/fragment_album" >
+        <argument
+            android:name="artistId"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="collectionId"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
 </navigation>

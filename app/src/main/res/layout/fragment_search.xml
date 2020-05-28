@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.search.SongViewModel" />
+            type="com.bancosantander.globallogicbryanescalona.presentation.ui.fragment.search.SearchViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,17 +15,51 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragment.search.SearchFragment">
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/tInputSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:drawableStart="@drawable/ic_search"
+        android:hint="Busca por artista"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.AppCompatEditText>
+
+    <ImageButton
+        android:id="@+id/imageButtonSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pBarSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/tInputSearch"
+        app:layout_constraintTop_toTopOf="@id/tInputSearch"
+        app:layout_constraintBottom_toBottomOf="@id/tInputSearch"
+        style="?android:attr/progressBarStyleSmall"
+        android:indeterminate="true"
+        android:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSongs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tInputSearch"
         app:setAdapter="@{viewModel.adapter}"
         tools:listitem="@layout/item_song" />
 
