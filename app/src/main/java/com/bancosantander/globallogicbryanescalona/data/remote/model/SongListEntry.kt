@@ -1,6 +1,5 @@
 package com.bancosantander.globallogicbryanescalona.data.remote.model
 
-import android.util.Log
 import com.bancosantander.globallogicbryanescalona.domain.model.SongList
 
 data class SongListEntry (
@@ -8,7 +7,7 @@ data class SongListEntry (
     val kind:String,
     val artistId:Long,
     val collectionId:Long,
-    val trackId:Int,
+    val trackId:Long,
     val artistName:String,
     val collectionName:String,
     val trackName:String,

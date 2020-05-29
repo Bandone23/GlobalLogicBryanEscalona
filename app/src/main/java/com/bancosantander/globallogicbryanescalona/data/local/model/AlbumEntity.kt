@@ -1,12 +1,16 @@
-package com.bancosantander.globallogicbryanescalona.domain.model
+package com.bancosantander.globallogicbryanescalona.data.local.model
 
-import com.bancosantander.globallogicbryanescalona.data.local.model.AlbumEntity
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.bancosantander.globallogicbryanescalona.domain.model.Album
+import com.bancosantander.globallogicbryanescalona.util.TABLE_ALBUMS
 
-
-data class Album (
+@Entity(tableName = TABLE_ALBUMS)
+data class AlbumEntity(
+    @PrimaryKey  val trackCount: Int,
+    val collectionId: Long,
     val wrapperType: String?,
     val artistId: Long,
-    val collectionId: Long,
     val artistName: String?,
     val collectionName: String?,
     val trackName:String?,
@@ -19,17 +23,14 @@ data class Album (
     val artworkUrl100: String?,
     val collectionPrice: Double,
     val collectionExplicitness: String?,
-    val trackCount: Int,
     val copyright: String?,
     val country: String?,
     val currency: String?,
     val releaseDate: String?,
     val primaryGenreName: String?,
-    val previewUrl:String?,
-    var isPlaying: Boolean,
-    var isPaused: Boolean
+    val previewUrl:String?
 )
-fun Album.toAlbumEntity() = AlbumEntity(
+fun AlbumEntity.toAlbum() = Album(
     wrapperType=wrapperType,
     artistId = artistId,
     collectionId = collectionId,
@@ -51,6 +52,8 @@ fun Album.toAlbumEntity() = AlbumEntity(
     currency = currency,
     releaseDate = releaseDate,
     primaryGenreName = primaryGenreName,
-    previewUrl = previewUrl
-)
+    previewUrl = previewUrl,
+    isPlaying = false,
+    isPaused = false
 
+)

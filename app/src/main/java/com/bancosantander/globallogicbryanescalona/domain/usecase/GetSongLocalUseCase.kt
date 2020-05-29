@@ -6,15 +6,13 @@ import com.bancosantander.globallogicbryanescalona.domain.model.SongList
 import com.bancosantander.globallogicbryanescalona.domain.model.request.SearchRequest
 import kotlinx.coroutines.Dispatchers
 
-class GetSongUseCase (
+class GetSongLocalUseCase(
     private val repository: SongRepository
-): ResultUseCase<SearchRequest,List<SongList>>(
+): ResultUseCase<SearchRequest, List<SongList>>(
     backgroundContext = Dispatchers.IO,
     foregroundContext = Dispatchers.Main
 ) {
-    override suspend fun executeOnBackground(params:SearchRequest): List<SongList>? {
-        val remoteSongSearch:List<SongList> = repository.getSong(term= params.search)
-         repository.saveSongLocal(remoteSongSearch)
-        return remoteSongSearch
+    override suspend fun executeOnBackground(params: SearchRequest): List<SongList>? {
+      return repository.getLocalSong(term = params.search)
     }
 }

@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bancosantander.globallogicbryanescalona.R
 import com.bancosantander.globallogicbryanescalona.databinding.ItemSongAlbumBinding
 import com.bancosantander.globallogicbryanescalona.domain.model.Album
-import com.bancosantander.globallogicbryanescalona.util.getImgPicasso
+
 
 class AlbumHolder (
     private val binding: ItemSongAlbumBinding
@@ -13,13 +13,8 @@ class AlbumHolder (
 
     private val mediaPlayer = MediaPlayer()
     fun bindEvent(songAlbum: Album, clickListener: (Album, Int) -> Unit) {
-        val context = itemView.context
         binding.songA = songAlbum
-        // todo quitar esto por que no esta realizando la paga
 
-        val actionIconResource = songAlbum.computeActionIconResource()
-        if (actionIconResource != 0) binding.btnPlay.setImageResource(actionIconResource)
-        binding.songAlbum.setOnClickListener{}
         binding.btnPlay.setOnClickListener {
             if(mediaPlayer.isPlaying){
                 mediaPlayer.pause();
