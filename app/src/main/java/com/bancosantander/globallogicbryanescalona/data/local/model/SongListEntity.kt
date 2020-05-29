@@ -1,13 +1,17 @@
-package com.bancosantander.globallogicbryanescalona.domain.model
+package com.bancosantander.globallogicbryanescalona.data.local.model
 
-import com.bancosantander.globallogicbryanescalona.data.local.model.SongListEntity
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.bancosantander.globallogicbryanescalona.domain.model.SongList
+import com.bancosantander.globallogicbryanescalona.util.TABLE_TRACKS
 
-data class SongList (
+@Entity(tableName = TABLE_TRACKS)
+data class SongListEntity(
+    @PrimaryKey val trackId: Long,
     val wrapperType:String,
     val kind:String,
     val artistId:Long,
     val collectionId:Long,
-    val trackId:Long,
     val artistName:String,
     val collectionName:String,
     val trackName:String,
@@ -35,8 +39,7 @@ data class SongList (
     val primaryGenreName:String,
     val isStreamable:Boolean
 )
-
-fun SongList.toSongListEntity() = SongListEntity(
+fun SongListEntity.toSongList() = SongList(
     wrapperType =wrapperType,
     kind=kind,
     artistId=artistId,

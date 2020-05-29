@@ -47,6 +47,5 @@ dependencies {
     implementation SupportLibraries.okhttp
     implementation Libraries.retrofit
     implementation Libraries.retrofitgson
-// quitar esta dependencia y todas las firestore
-    implementation Libraries.crashlytics
+
 }

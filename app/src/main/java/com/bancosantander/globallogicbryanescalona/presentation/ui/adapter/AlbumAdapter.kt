@@ -6,11 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bancosantander.globallogicbryanescalona.R
 import com.bancosantander.globallogicbryanescalona.databinding.ItemSongAlbumBinding
-import com.bancosantander.globallogicbryanescalona.databinding.ItemSongBinding
 import com.bancosantander.globallogicbryanescalona.domain.model.Album
-import com.bancosantander.globallogicbryanescalona.domain.model.SongList
 import com.bancosantander.globallogicbryanescalona.presentation.ui.adapter.holder.AlbumHolder
-import com.bancosantander.globallogicbryanescalona.presentation.ui.adapter.holder.SongHolder
 
 class AlbumAdapter(
     private var songAlbum: MutableList<Album>,

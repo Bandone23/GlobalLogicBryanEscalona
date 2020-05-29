@@ -45,8 +45,6 @@ dependencies {
     implementation Libraries.koinScope
     implementation Libraries.koinViewModel
 
-
-
     implementation Libraries.coroutinescore
     implementation Libraries.coroutinesandroid
 
@@ -73,6 +71,7 @@ dependencies {
 
     implementation SupportLibraries.room
     implementation SupportLibraries.roomKtx
+    kapt SupportLibraries.roomCompiler
 
 
     implementation JetPackCompose.navigationFragment
