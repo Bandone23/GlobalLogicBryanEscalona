@@ -15,10 +15,12 @@ class AlbumHolder (
     fun bindEvent(songAlbum: Album, clickListener: (Album, Int) -> Unit) {
         val context = itemView.context
         binding.songA = songAlbum
+        // todo quitar esto por que no esta realizando la paga
+
         val actionIconResource = songAlbum.computeActionIconResource()
         if (actionIconResource != 0) binding.btnPlay.setImageResource(actionIconResource)
-        binding.songAlbum.setOnClickListener{
-
+        binding.songAlbum.setOnClickListener{}
+        binding.btnPlay.setOnClickListener {
             if(mediaPlayer.isPlaying){
                 mediaPlayer.pause();
                 binding.btnPlay.setImageResource(R.drawable.ic_pause)
@@ -27,10 +29,6 @@ class AlbumHolder (
                 mediaPlayer.start()
                 binding.btnPlay.setImageResource(R.drawable.ic_play_on)
             }
-        }
-
-        binding.btnPlay.setOnClickListener {
-
 
         }
        // getImgPicasso(r.drawable.ic_play,binding.imageView)
